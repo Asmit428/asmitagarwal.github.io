@@ -3,92 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asmit Agarwal | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Asmit Agarwal - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent: #3b82f6;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 12px 30px;
+            border-radius: 50px;
+            z-index: 1000;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 25px;
+        }
+        nav a.active, nav a:hover { background: var(--primary); }
+        section {
+            min-height: 100vh;
+            padding: 100px 20px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container { max-width: 1200px; width: 100%; }
+        h1 { font-size: 4rem; }
+        h2 { font-size: 2.5rem; margin-bottom: 40px; text-align: center; color: var(--primary); }
+        .hero-content { max-width: 1000px; padding-left: 2rem; }
+        .hero-intro { color: var(--text-secondary); }
+        .hero-tagline {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #94a3b8, #64748b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-description { color: var(--text-secondary); margin-top: 20px; }
+        .btn-primary {
+            display: inline-block;
+            margin-top: 40px;
+            background: var(--primary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+        .about-content, .education-card, .achievement-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 4px solid var(--primary);
+            max-width: 900px;
+            margin: auto;
+        }
+        .skills-grid, .projects-grid, .achievements-grid {
+            display: grid;
+            gap: 30px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .project-box {
+            background: rgba(37,99,235,0.08);
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(59,130,246,0.3);
+        }
+        .project-links { margin-top: 10px; }
+        .project-link {
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            gap: 6px;
+        }
+        footer {
+            background: var(--bg-card);
+            padding: 20px;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+    </style>
 </head>
+
 <body>
 
 <nav>
-    <h2>Asmit</h2>
     <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#hero" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#achievements" class="nav-link">Achievements</a></li>
     </ul>
 </nav>
 
-<section class="hero">
-    <h1>Hi, I'm <span>Asmit Agarwal</span></h1>
-    <p>B.Tech CSE Student | Software & Backend Developer</p>
-    <div class="buttons">
-        <a href="#projects">View Projects</a>
-        <a href="resume.pdf" target="_blank">Resume</a>
+<section id="hero">
+    <div class="container hero-content">
+        <p class="hero-intro">Hello, my name is</p>
+        <h1>Asmit Agarwal</h1>
+        <p class="hero-tagline">I am excited about new technologies.</p>
+        <p class="hero-description">
+            Currently pursuing B.Tech in Computer Science at JIIT Noida, I work on backend-focused projects,
+            algorithmic problem-solving, and scalable applications.
+        </p>
+        <a href="https://drive.google.com/file/d/1xYU2sGQpSOtvoHA6rl-gF_aFKsdlITeH/view?usp=sharing"
+           target="_blank"
+           class="btn-primary">
+            View Resume
+        </a>
     </div>
 </section>
 
-<section id="about" class="section">
-    <h2>About Me</h2>
-    <p>
-        I am a Computer Science undergraduate passionate about building efficient software systems,
-        solving algorithmic problems, and developing real-world applications using web and backend technologies.
-    </p>
-</section>
+<section id="projects">
+    <div class="container">
+        <h2>Projects</h2>
 
-<section id="skills" class="section">
-    <h2>Skills</h2>
-    <div class="skills">
-        <span>C++</span>
-        <span>Python</span>
-        <span>JavaScript</span>
-        <span>React</span>
-        <span>Node.js</span>
-        <span>Express</span>
-        <span>MySQL</span>
-        <span>MongoDB</span>
-        <span>Git</span>
+        <div class="project-box">
+            <h3>ThermoVision - Thermal Detection & Collision Safety</h3>
+            <p><i>Python, TensorRT, Jetson Nano</i></p>
+            <div class="project-links">
+                <a href="#" class="project-link" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+
+        <div class="project-box">
+            <h3>LiveText - Real-time Collaborative Text Editor</h3>
+            <p><i>PHP, JavaScript, MySQL, AJAX</i></p>
+            <div class="project-links">
+                <a href="https://github.com/sarthakChy/LiveDraft-A-Live-Text-Editor"
+                   class="project-link"
+                   target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+
+        <div class="project-box">
+            <h3>SegEdge — Graph-based Image Segmentation Engine</h3>
+            <p><i>C++, DSU, Graph Processing</i></p>
+            <div class="project-links">
+                <a href="https://github.com/Asmit428/SegEdge-Image-Segmentation-in-C-"
+                   class="project-link"
+                   target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+
     </div>
 </section>
 
-<section id="projects" class="section">
-    <h2>Projects</h2>
-
-    <div class="project">
-        <h3>Smart Traffic Simulation</h3>
-        <p>Simulated emergency vehicle routing using Dijkstra’s algorithm.</p>
-        <p><b>Tech:</b> C++, Graphs, OOP</p>
-        <a href="#" target="_blank">GitHub</a>
+<section id="education">
+    <div class="container">
+        <h2>Education</h2>
+        <div class="education-card">
+            <h3>Jaypee Institute of Information Technology</h3>
+            <p>B.Tech CSE | 2023–2027</p>
+            <p><b>CGPA:</b> 9.1 / 10</p>
+        </div>
     </div>
-
-    <div class="project">
-        <h3>Blood Donation Platform</h3>
-        <p>Web platform to find donors based on city and blood group.</p>
-        <p><b>Tech:</b> PHP, MySQL, HTML, CSS</p>
-        <a href="#" target="_blank">GitHub</a>
-    </div>
-
-    <div class="project">
-        <h3>Image Segmentation using DSU</h3>
-        <p>Clustered image pixels using graph-based segmentation.</p>
-        <p><b>Tech:</b> C++, DSU, Image Processing</p>
-        <a href="#" target="_blank">GitHub</a>
-    </div>
-
 </section>
 
-<section id="contact" class="section">
-    <h2>Contact</h2>
-    <p>Email: asmitaggarwal007@gmail.com</p>
-    <p>
-        <a href="https://github.com/asmit428" target="_blank">GitHub</a> |
-        <a href="https://linkedin.com/in/your-link" target="_blank">LinkedIn</a>
-    </p>
+<section id="achievements">
+    <div class="container">
+        <h2>Achievements</h2>
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <h3>Meta Hacker Cup 2025</h3>
+                <p>Global Rank 3068 among 13,500+ participants</p>
+            </div>
+            <div class="achievement-card">
+                <h3>CodeChef 3-Star</h3>
+                <p>Max Rating 1654</p>
+            </div>
+        </div>
+    </div>
 </section>
 
 <footer>
-    <p>© 2026 Asmit Agarwal</p>
+    <p>© 2026 Asmit Agarwal. All rights reserved.</p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            document.querySelector(link.getAttribute('href'))
+                .scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+</script>
+
 </body>
 </html>
