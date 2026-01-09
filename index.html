@@ -28,6 +28,23 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated particles background */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        nav, section, footer {
+            position: relative;
+            z-index: 1;
         }
 
         /* Floating Navigation */
@@ -435,6 +452,54 @@
             font-size: 0.95rem;
         }
 
+        /* Contact Section */
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-intro {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .contact-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 15px 30px;
+            border-radius: 10px;
+            background: rgba(37, 99, 235, 0.1);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 280px;
+            justify-content: center;
+        }
+
+        .contact-link:hover {
+            background: rgba(37, 99, 235, 0.2);
+            border-color: var(--primary);
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .contact-link i {
+            font-size: 1.3rem;
+        }
+
         footer {
             background: var(--bg-card);
             padding: 20px 0;
@@ -479,6 +544,8 @@
     </style>
 </head>
 <body>
+    <canvas id="particles-canvas"></canvas>
+    
     <nav>
         <ul>
             <li><a href="#hero" class="nav-link">Home</a></li>
@@ -487,6 +554,7 @@
             <li><a href="#projects" class="nav-link">Projects</a></li>
             <li><a href="#education" class="nav-link">Education</a></li>
             <li><a href="#achievements" class="nav-link">Achievements</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
     </nav>
 
@@ -499,7 +567,7 @@
                 Currently pursuing B.Tech in Computer Science at JIIT Noida, I work on backend-focused projects, algorithmic problem-solving, and scalable applications while continuously improving my engineering skills.
             </p>
             <div class="btn-container">
-                <a href="#" class="btn-primary">View Resume</a>
+                <a href="https://drive.google.com/file/d/1xYU2sGQpSOtvoHA6rl-gF_aFKsdlITeH/view?usp=sharing" target="_blank" class="btn-primary">View Resume</a>
             </div>
         </div>
     </section>
@@ -591,7 +659,7 @@
                     <div class="project-header">
                         <h3 class="project-title">ThermoVision - Thermal Detection & Collision Safety</h3>
                         <div class="project-links">
-                            <a href="https://github.com/asmit428" target="_blank" class="project-link">
+                            <a href="https://github.com/asmit428/thermovision" target="_blank" class="project-link">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
                         </div>
@@ -606,7 +674,7 @@
                     <div class="project-header">
                         <h3 class="project-title">LiveText - Real-time Collaborative Text Editor</h3>
                         <div class="project-links">
-                            <a href="https://github.com/asmit428" target="_blank" class="project-link">
+                            <a href="https://github.com/sarthakChy/LiveDraft-A-Live-Text-Editor" target="_blank" class="project-link">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
                         </div>
@@ -621,7 +689,7 @@
                     <div class="project-header">
                         <h3 class="project-title">SegEdge — Graph-based Image Segmentation Engine</h3>
                         <div class="project-links">
-                            <a href="https://github.com/asmit428" target="_blank" class="project-link">
+                            <a href="https://github.com/Asmit428/SegEdge-Image-Segmentation-in-C-" target="_blank" class="project-link">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
                         </div>
@@ -678,11 +746,114 @@
         </div>
     </section>
 
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-container">
+                <p class="contact-intro">
+                    Feel free to reach out if you'd like to collaborate on a project, discuss technology, or just connect!
+                </p>
+                <div class="contact-links">
+                    <a href="tel:+917217817535" class="contact-link">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 7217817535</span>
+                    </a>
+                    
+                    <a href="mailto:asmitagarwal14@gmail.com" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>asmitagarwal14@gmail.com</span>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/in/asmit428" target="_blank" class="contact-link">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>LinkedIn Profile</span>
+                    </a>
+                    
+                    <a href="https://github.com/asmit428" target="_blank" class="contact-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub Profile</span>
+                    </a>
+                    
+                    <a href="https://drive.google.com/file/d/1xYU2sGQpSOtvoHA6rl-gF_aFKsdlITeH/view?usp=sharing" target="_blank" class="contact-link">
+                        <i class="fas fa-file-alt"></i>
+                        <span>View Resume</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2026 Asmit Agarwal. All rights reserved.</p>
     </footer>
 
     <script>
+        // Particles animation
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        const particles = [];
+        const particleCount = 150;
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 + 0.2;
+                this.opacity = Math.random() * 0.5 + 0.3;
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                if (this.y > canvas.height) {
+                    this.y = 0;
+                    this.x = Math.random() * canvas.width;
+                }
+                
+                if (this.x > canvas.width) {
+                    this.x = 0;
+                } else if (this.x < 0) {
+                    this.x = canvas.width;
+                }
+            }
+            
+            draw() {
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+        
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+        
         // Smooth scrolling for navigation links
         document.querySelectorAll('.nav-link').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
