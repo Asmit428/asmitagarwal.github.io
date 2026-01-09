@@ -6,7 +6,12 @@
     <title>Asmit Agarwal - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --primary: #2563eb;
             --primary-dark: #1e40af;
@@ -16,12 +21,16 @@
             --text-secondary: #94a3b8;
             --accent: #3b82f6;
         }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: var(--bg-dark);
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
+
+        /* Floating Navigation */
         nav {
             position: fixed;
             top: 20px;
@@ -32,194 +41,678 @@
             padding: 12px 30px;
             border-radius: 50px;
             z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(59, 130, 246, 0.3);
+            white-space: nowrap;
         }
-        nav ul { list-style: none; display: flex; gap: 20px; }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: nowrap;
+        }
+
         nav a {
             color: var(--text-primary);
             text-decoration: none;
             padding: 8px 16px;
             border-radius: 25px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            white-space: nowrap;
         }
-        nav a.active, nav a:hover { background: var(--primary); }
+
+        nav a:hover, nav a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Full-screen sections */
         section {
             min-height: 100vh;
-            padding: 100px 20px 60px;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 100px 20px 60px;
+            scroll-snap-align: start;
         }
-        .container { max-width: 1200px; width: 100%; }
-        h1 { font-size: 4rem; }
-        h2 { font-size: 2.5rem; margin-bottom: 40px; text-align: center; color: var(--primary); }
-        .hero-content { max-width: 1000px; padding-left: 2rem; }
-        .hero-intro { color: var(--text-secondary); }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-content {
+            text-align: left;
+            max-width: 1000px;
+            padding-left: 2rem;
+        }
+
+        .hero-intro {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
         .hero-tagline {
             font-size: 3rem;
-            background: linear-gradient(135deg, #94a3b8, #64748b);
+            background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            font-weight: 600;
         }
-        .hero-description { color: var(--text-secondary); margin-top: 20px; }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            max-width: 900px;
+        }
+
+        .btn-container {
+            margin-top: 40px;
+        }
+
         .btn-primary {
             display: inline-block;
-            margin-top: 40px;
             background: var(--primary);
             color: white;
             padding: 14px 32px;
             border-radius: 10px;
             text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-        .about-content, .education-card, .achievement-card {
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            background: var(--primary-dark);
+            transition: height 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            height: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        /* About Section */
+        .about-content {
             background: var(--bg-card);
-            padding: 30px;
+            padding: 40px;
             border-radius: 20px;
             border-left: 4px solid var(--primary);
             max-width: 900px;
-            margin: auto;
+            margin: 0 auto;
         }
-        .skills-grid, .projects-grid, .achievements-grid {
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .hobbies {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .hobby-tag {
+            background: var(--bg-dark);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: var(--accent);
+            border: 1px solid var(--primary);
+            font-size: 0.95rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .skill-box {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(20, 30, 48, 0.95) 100%);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            transition: all 0.3s;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.25);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, #60a5fa 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .skill-box h3 {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .subskills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .subskill {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 12px 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .subskill:hover {
+            background: rgba(37, 99, 235, 0.2);
+            color: var(--text-primary);
+            border-color: var(--primary);
+        }
+
+        .subskill i {
+            font-size: 1.1rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
             display: grid;
             gap: 30px;
             max-width: 1000px;
-            margin: auto;
+            margin: 0 auto;
         }
+
         .project-box {
-            background: rgba(37,99,235,0.08);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(59, 130, 246, 0.1) 100%);
             padding: 35px;
             border-radius: 20px;
-            border: 1px solid rgba(59,130,246,0.3);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-        .project-links { margin-top: 10px; }
+
+        .project-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, #60a5fa 100%);
+        }
+
+        .project-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(37, 99, 235, 0.3);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .project-title {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            flex: 1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+        }
+
         .project-link {
             background: var(--primary);
             color: white;
             padding: 8px 16px;
             border-radius: 8px;
             text-decoration: none;
-            display: inline-flex;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
             gap: 6px;
         }
+
+        .project-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .project-tech {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Education & Achievements */
+        .education-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .education-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .education-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .education-meta {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .cgpa {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .achievements-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .achievement-card {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 3px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .achievement-card h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+
+        .achievement-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
         footer {
             background: var(--bg-card);
-            padding: 20px;
+            padding: 20px 0;
             text-align: center;
             color: var(--text-secondary);
         }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            nav {
+                padding: 10px 20px;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav a {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+        }
     </style>
 </head>
-
 <body>
+    <nav>
+        <ul>
+            <li><a href="#hero" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#education" class="nav-link">Education</a></li>
+            <li><a href="#achievements" class="nav-link">Achievements</a></li>
+        </ul>
+    </nav>
 
-<nav>
-    <ul>
-        <li><a href="#hero" class="nav-link">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#education" class="nav-link">Education</a></li>
-        <li><a href="#achievements" class="nav-link">Achievements</a></li>
-    </ul>
-</nav>
-
-<section id="hero">
-    <div class="container hero-content">
-        <p class="hero-intro">Hello, my name is</p>
-        <h1>Asmit Agarwal</h1>
-        <p class="hero-tagline">I am excited about new technologies.</p>
-        <p class="hero-description">
-            Currently pursuing B.Tech in Computer Science at JIIT Noida, I work on backend-focused projects,
-            algorithmic problem-solving, and scalable applications.
-        </p>
-        <a href="https://drive.google.com/file/d/1xYU2sGQpSOtvoHA6rl-gF_aFKsdlITeH/view?usp=sharing"
-           target="_blank"
-           class="btn-primary">
-            View Resume
-        </a>
-    </div>
-</section>
-
-<section id="projects">
-    <div class="container">
-        <h2>Projects</h2>
-
-        <div class="project-box">
-            <h3>ThermoVision - Thermal Detection & Collision Safety</h3>
-            <p><i>Python, TensorRT, Jetson Nano</i></p>
-            <div class="project-links">
-                <a href="#" class="project-link" target="_blank">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
+    <section id="hero">
+        <div class="container hero-content">
+            <p class="hero-intro">Hello, my name is</p>
+            <h1>Asmit Agarwal</h1>
+            <p class="hero-tagline">I am excited about new technologies.</p>
+            <p class="hero-description">
+                Currently pursuing B.Tech in Computer Science at JIIT Noida, I work on backend-focused projects, algorithmic problem-solving, and scalable applications while continuously improving my engineering skills.
+            </p>
+            <div class="btn-container">
+                <a href="#" class="btn-primary">View Resume</a>
             </div>
         </div>
+    </section>
 
-        <div class="project-box">
-            <h3>LiveText - Real-time Collaborative Text Editor</h3>
-            <p><i>PHP, JavaScript, MySQL, AJAX</i></p>
-            <div class="project-links">
-                <a href="https://github.com/sarthakChy/LiveDraft-A-Live-Text-Editor"
-                   class="project-link"
-                   target="_blank">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>I'm a Computer Science student at Jaypee Institute of Information Technology with a passion for building innovative solutions and solving complex problems. With a strong foundation in algorithms and data structures, I enjoy working on projects that challenge me to think creatively and push the boundaries of what's possible.</p>
+                
+                <p>Beyond coding, I lead the competitive programming hub at JIIT, where I mentor students and organize contests to foster a collaborative learning environment.</p>
+                
+                <h3 style="color: var(--text-primary); margin-top: 25px; margin-bottom: 15px; text-align: center;">Hobbies & Interests</h3>
+                <div class="hobbies">
+                    <span class="hobby-tag">💪 Fitness</span>
+                    <span class="hobby-tag">🏋️ Gym</span>
+                    <span class="hobby-tag">🎵 Music</span>
+                    <span class="hobby-tag">✈️ Travelling</span>
+                    <span class="hobby-tag">🎮 Gaming</span>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="project-box">
-            <h3>SegEdge — Graph-based Image Segmentation Engine</h3>
-            <p><i>C++, DSU, Graph Processing</i></p>
-            <div class="project-links">
-                <a href="https://github.com/Asmit428/SegEdge-Image-Segmentation-in-C-"
-                   class="project-link"
-                   target="_blank">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <div class="skill-header">
+                        <div class="skill-icon">💻</div>
+                        <h3>Programming Languages</h3>
+                    </div>
+                    <div class="subskills">
+                        <span class="subskill"><i class="fab fa-cuttlefish"></i> C++</span>
+                        <span class="subskill"><i class="fab fa-python"></i> Python</span>
+                        <span class="subskill"><i class="fab fa-php"></i> PHP</span>
+                        <span class="subskill"><i class="fab fa-js"></i> JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-header">
+                        <div class="skill-icon">🚀</div>
+                        <h3>Technologies</h3>
+                    </div>
+                    <div class="subskills">
+                        <span class="subskill"><i class="fab fa-react"></i> ReactJS</span>
+                        <span class="subskill"><i class="fab fa-node-js"></i> Node.JS</span>
+                        <span class="subskill"><i class="fas fa-fire"></i> Firebase</span>
+                        <span class="subskill">Express.js</span>
+                        <span class="subskill">AJAX</span>
+                        <span class="subskill">HTML/CSS</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-header">
+                        <div class="skill-icon">🗄️</div>
+                        <h3>Database Skills</h3>
+                    </div>
+                    <div class="subskills">
+                        <span class="subskill"><i class="fas fa-leaf"></i> MongoDB</span>
+                        <span class="subskill"><i class="fas fa-database"></i> MySQL</span>
+                        <span class="subskill">PL/SQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-header">
+                        <div class="skill-icon">🛠️</div>
+                        <h3>Tools & Platforms</h3>
+                    </div>
+                    <div class="subskills">
+                        <span class="subskill"><i class="fab fa-git-alt"></i> Git</span>
+                        <span class="subskill"><i class="fab fa-linux"></i> Linux</span>
+                        <span class="subskill">XAMPP</span>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-    </div>
-</section>
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-box">
+                    <div class="project-header">
+                        <h3 class="project-title">ThermoVision - Thermal Detection & Collision Safety</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/asmit428" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-tech">Python, TensorRT, Jetson Nano, CUDA</p>
+                    <p class="project-description">
+                        A cutting-edge thermal vision system designed for autonomous vehicles and safety applications in challenging visibility conditions. The project implements real-time object detection using YOLOv5 optimized with TensorRT, achieving impressive frame rates on edge devices. Through advanced optimization techniques including model quantization and CUDA-accelerated preprocessing, the system delivers reliable performance for night-time and foggy environments, making it ideal for collision avoidance systems.
+                    </p>
+                </div>
 
-<section id="education">
-    <div class="container">
-        <h2>Education</h2>
-        <div class="education-card">
-            <h3>Jaypee Institute of Information Technology</h3>
-            <p>B.Tech CSE | 2023–2027</p>
-            <p><b>CGPA:</b> 9.1 / 10</p>
-        </div>
-    </div>
-</section>
+                <div class="project-box">
+                    <div class="project-header">
+                        <h3 class="project-title">LiveText - Real-time Collaborative Text Editor</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/asmit428" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-tech">PHP, JavaScript, MySQL, AJAX</p>
+                    <p class="project-description">
+                        A Google Docs-inspired collaborative editing platform enabling seamless real-time collaboration among multiple users. Built with a focus on performance and consistency, the application features sophisticated conflict resolution algorithms similar to CRDTs, live cursor tracking, and a comprehensive undo/redo system. The architecture ensures sub-400ms synchronization latency while maintaining data consistency across concurrent editing sessions, making it perfect for team collaboration.
+                    </p>
+                </div>
 
-<section id="achievements">
-    <div class="container">
-        <h2>Achievements</h2>
-        <div class="achievements-grid">
-            <div class="achievement-card">
-                <h3>Meta Hacker Cup 2025</h3>
-                <p>Global Rank 3068 among 13,500+ participants</p>
+                <div class="project-box">
+                    <div class="project-header">
+                        <h3 class="project-title">SegEdge — Graph-based Image Segmentation Engine</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/asmit428" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-tech">C++, DSU, Graph Processing</p>
+                    <p class="project-description">
+                        An efficient image segmentation engine leveraging graph theory and disjoint-set union data structures for automated region detection. The system transforms images into graph representations and applies intelligent clustering algorithms to identify distinct regions. With significant performance improvements over traditional methods, it's optimized for batch processing workflows and can be extended with custom segmentation rules for various computer vision applications and dataset automation tasks.
+                    </p>
+                </div>
             </div>
-            <div class="achievement-card">
-                <h3>CodeChef 3-Star</h3>
-                <p>Max Rating 1654</p>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-container">
+                <div class="education-card">
+                    <h3>Jaypee Institute of Information Technology</h3>
+                    <p class="education-meta">B.Tech in Computer Science and Engineering | 2023-2027</p>
+                    <p class="cgpa">CGPA: 9.1 / 10</p>
+                </div>
+                
+                <div class="education-card">
+                    <h3>Senior Secondary Education (Class 12th)</h3>
+                    <p class="education-meta">Central Board of Secondary Education (CBSE) | 2023</p>
+                    <p class="cgpa">Percentage: 95.4%</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer>
-    <p>© 2026 Asmit Agarwal. All rights reserved.</p>
-</footer>
+    <section id="achievements">
+        <div class="container">
+            <h2>Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <h3>Meta Hacker Cup 2025</h3>
+                    <p>Secured Global Rank 3068 among 13,500+ participants in competitive programming contest</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>CodeChef 3-Star</h3>
+                    <p>Achieved 3-star rating (max: 1654) demonstrating consistent problem-solving proficiency</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>Tech Head - JIIT</h3>
+                    <p>Leading competitive programming hub at JIIT, organizing contests and mentoring 50+ students</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>Problem Solving</h3>
+                    <p>Solved 400+ algorithmic problems across LeetCode, Codeforces, and GeeksforGeeks platforms</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', e => {
-            e.preventDefault();
-            document.querySelector(link.getAttribute('href'))
-                .scrollIntoView({ behavior: 'smooth' });
+    <footer>
+        <p>&copy; 2026 Asmit Agarwal. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
         });
-    });
-</script>
 
+        // Update active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
